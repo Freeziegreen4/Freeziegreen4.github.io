@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    flex-direction: row;
+    background: rgb(37, 43, 72);
+    background-image: linear-gradient(rgba(37, 43, 72, 0.5), rgba(37, 72, 51, 0.5)), url('SitePhotos/Construction.png');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+}
+
+
+#section-border {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 30vh;
+    margin-top: 20vh;
+    padding: 5%;
+    /* padding-top: 5%;
+    padding-bottom: 5%; */
+    background-color: rgb(91, 154, 139, 0.9);
+    border-radius: 5rem;
+    align-items: center;
+    position: absolute;
+    /* justify-content: center; */
+}
+
+h1 {
+    width: 75%;
+    margin: 5%;
+    /* height: 50%; */
+    font-size: 5vmin;
+    position: inherit;
+    top: 5%;
+}
+
+a {
+    margin: 2.5%;
+    transition-timing-function: ease;
+    transition-duration: 150ms;
+    position: inherit;
+    bottom: 5%;
+
+    /* cursor:grab; */
+    >button {
+        aspect-ratio: 2 / 0.3;
+        cursor: inherit;
+        border-radius: 5rem;
+        outline: 0.5rem solid rgb(37, 43, 72);
+        border: none;
+        background-color: #F7E987;
+        font: bold 5vmin "inherit";
+    }
+}
+
+a:hover {
+    transform: scale(1.04);
+}
+
+/* a>button:hover{
+    transform: scale(1.04);
+    font-size: 1.9rem;
+} */
+
+/* img{
+    width: 50vh;
+    aspect-ratio: 1.8 / 1;
+    border-radius: 0.5rem;  
+    margin-top: 0.75rem;
+    outline: 0.5rem solid #F7E987;
+} */

@@ -1,0 +1,292 @@
+*{
+    max-width: 100vw;
+    align-items: center;
+}
+header{
+    display: flex;
+    margin:0px;
+    background: radial-gradient(#5B9A8B,#252b4800);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 5rem;
+    font-size: 5rem;
+    top: 1vh;
+    height: 10rem;
+    width: 85vw;
+    z-index: 4;
+}
+
+#header-align{
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+    margin-bottom: 1vh;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    background-color: #252b48;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    transition: transform 500ms cubic-bezier(.13, .53, .48, .97);
+    /* background: center 0% url('./TempSiteImage.png'); */
+    align-items: center;
+    justify-content: center;
+    background-size:cover;
+    position: relative;
+    z-index: 2;
+    > h2 {
+        margin: -0.5vh;
+    }
+    .disclaimer {
+        color:rgb(255, 150, 135);
+    }
+}
+
+.main-icons{
+    margin-top: 10vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    height: 10rem;
+}
+
+#contact-info{
+    display: flex;
+    flex-direction: column;
+    position:static;
+    /* top:71.25vh;
+    left: 30vw; */
+    padding-left: 2.9vw;
+    > div{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: -25px;
+        > p{
+            font-size: 1.25rem;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+            color:#5B9A8B;
+            > a{
+                color: #F7E987;
+            }
+        }
+        > #contact-row{
+            padding-right: 10.7vw;
+        }
+    }
+}
+
+#nav-toggle{
+    height: 5rem;
+    width: 5rem;
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    bottom: 3rem;
+    transform: translateX(-50%);
+    background-color: #F7E987;
+    border: none;
+    border-radius: 5rem;
+    outline:none;
+    box-shadow: 0rem 0rem 4rem rgba(0 0 0 / 35%);
+    cursor: pointer;
+    transition: transform, background-color;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+    z-index: 3;
+}
+#nav-toggle:hover{
+    transform: translateX(-50%) scale(1.04);
+}
+#nav-toggle:active{
+    transform: translateX(-50%) scale(0.96);
+}
+#nav-toggle > i {
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    color: #445069;
+    font-size: 1.75rem;
+    opacity: 0;
+    transition: transform, opacity;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+}
+#nav-links{
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-top: clamp(2rem, 2vw, 3rem);
+    padding:0rem clamp(1rem, 2vw, 2rem);
+    transform: translateY(70%) scale(0.9);
+    transition: transform 500ms cubic-bezier(.13, .53, .48, .97);
+    /* background: linear-gradient(#00000000, #445069, #00000000); */
+}
+#nav-links > .nav-link{
+    text-decoration: none;
+}
+#nav-links > .nav-link > .nav-link-label{
+    color: white;
+    font-size: 1.25rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+#nav-links > .nav-link > .nav-link-image{
+    width: max(20vw, 400px);
+    aspect-ratio: 1.8 / 1;
+    border-radius: 0.5rem;
+    margin-top: 0.75rem;
+    object-fit: cover;
+}
+
+/* ------------------------------------------------ */
+/* Nav bar functionality */
+
+    /* For moving the nav bar up and down  */
+body[data-nav="true"] > nav > #nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%) scale(1);
+    transition: opacity 400ms, transform 400ms, visibility 400ms;
+}
+
+
+body:not([data-nav="true"]) > nav > #nav-links {
+    opacity: 0;
+    transition: opacity 400ms, 400ms cubic-bezier(.13, .53, .48, .97);
+}
+
+nav{
+    overflow:auto;
+    overflow-y: hidden;
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+}
+
+    /* Gets rid of the scrollbar */
+nav::-webkit-scrollbar{
+    display: none;
+}
+
+/* ------------------------------------------------ */
+/* For making the nav button display its function icon */
+
+body:not([data-nav="true"]) > #nav-toggle:hover > .open {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+body[data-nav="true"] > #nav-toggle:hover > .close {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+body[data-nav="true"] > main {
+    transform: translateY(-50%);
+}
+
+/* ------------------------------------------------ */
+
+/* First attempt, failed */
+/* body[data-nav="true"] > nav {
+    animation: fadeIn 400ms;
+    -webkit-animation: fadeIn 400ms;
+    -moz-animation: fadeIn 400ms;
+    -o-animation: fadeIn 400ms;
+    -ms-animation: fadeIn 400ms;
+    background: linear-gradient(#00000000, #445069, #00000000);
+}
+
+@keyframes fadeIn{
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+@-moz-keyframes fadeIn{
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+@-webkit-keyframes fadeIn{
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+@-o-keyframes fadeIn{
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+@-ms-keyframes fadeIn{
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+body:not([data-nav="true"]) > nav {
+    animation: fadeOut 400ms;
+    -webkit-animation: fadeOut 400ms;
+    -moz-animation: fadeOut 400ms;
+    -o-animation: fadeout 400ms;
+    -ms-animation: fadeOut 400ms;
+}
+
+@keyframes fadeOut{
+    0% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+@-moz-keyframes fadeOut{
+    0% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+@-webkit-keyframes fadeOut{
+    0% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+@-o-keyframes fadeOut{
+    0% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+@-ms-keyframes fadeOut{
+    0% { opacity: 1;}
+    100% { opacity: 0;}
+} */
+
+/* ------------------------------------------------ */
+/* For fading in the gradient, currently not working as intended */
+/* body[data-nav="true"] > nav {
+    animation: 400ms ease-in forwards fadeInOut;
+    background: linear-gradient(#00000000, #445069, #00000000);
+    background-image: url("TempSiteImage.png");
+    transition: background 400ms;
+}
+body:not([data-count="0"]) > nav {
+    background: none;
+    transition: background 400ms;
+    animation: 400ms ease-out backwards fadeInOut;
+} */
+/* 
+@keyframes fadeInOut {
+    from { background: #00000000; }
+    to { background: url("TempSiteImage.png");}
+    to{ background: linear-gradient(#00000000, #445069, #00000000); }
+} */
+
+/* ------------------------------------------------ */
